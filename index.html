@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weitwurf</title>
+</head>
+<body>
+    <script>
+        function game(){
+            var v0;
+            var winkelGrad;
+            var winkelBogenmaß;
+            var throwingDistance;
+            var i;
+            var g= 9.81;
+            var distance = Math.floor((Math.random() * 100) + 1);
+            
+            alert("Du bist in einem Gefängnis. Um herauszukommen, musst du den Hebel treffen, damit sich deine Tür öffnet. Allerdings hast du nur drei Steine.")
+
+            for (i=1; i<=3; i++ ){
+                alert(`Der Hebel ist ${distance} meter weit weg`)
+
+                v0 = prompt("Gib die Anfangsgeschwindigkeit (v0) ein:");
+                winkelGrad = prompt("Geb den Wurfwinkel ein.", "zwischen 1 und 90 Grad.");
+
+                winkelBogenmaß = winkelGrad * (Math.PI / 180);
+                throwingDistance = Math.round(Math.pow(v0, 2) * Math.sin(2 * winkelBogenmaß) / g);
+
+                if (distance === throwingDistance){
+                    alert("Du hast gewonnen");
+                    break
+                };
+
+                if (throwingDistance != distance) {
+                    alert(`Du hast ${throwingDistance} meter weit geworfen versuch es nochmal`);
+                };
+
+                if (throwingDistance < 5){
+                    i = --i;
+                    alert("Dein Wurf war so kurz du konntest deinen Stein wieder aufheben")
+                };
+            };
+        }
+        game();
+    </script>
+</body>
+</html>
